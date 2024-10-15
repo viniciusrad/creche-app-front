@@ -47,17 +47,15 @@ function App() {
       <header className="App-header">
         <h1>Creche App</h1>
 
-   
-          <div>
-            <input
-              type="file"
-              accept="image/*"
-              capture="camera"
-              onChange={handleImageUpload}
-            />
-            <p>Tire uma foto com seu celular/</p>
-            {gender && <p>Gênero detectado: {gender}</p>}
-          </div>
+        <div>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
+          <p>Tire uma foto com seu celular ou faça upload de uma imagem do seu computador</p>
+          {gender && <p>Gênero detectado: {gender}</p>}
+        </div>
       </header>
     </div>
   );
