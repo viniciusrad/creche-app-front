@@ -55,7 +55,7 @@ function App() {
               capture="camera"
               onChange={handleImageUpload}
             />
-            <p>Tire uma foto com seu celular</p>
+            <p>Tire uma foto com seu celular/</p>
             {gender && <p>Gênero detectado: {gender}</p>}
           </div>
         )}
