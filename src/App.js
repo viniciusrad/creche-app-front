@@ -16,7 +16,7 @@ function App() {
     await faceapi.nets.ageGenderNet.loadFromUri('/models');
   };
 
-  const handleImageUpload = async (e) => {W
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
