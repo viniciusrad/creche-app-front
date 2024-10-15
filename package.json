@@ -37,9 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
+  },  
   "devDependencies": {
     "gh-pages": "^6.2.0"
   },
-  "homepage": "https://github.com/viniciusrad/creche-app-fron"
+  "homepage": "https://viniciusrad.github.io/creche-app-front/"
 }
