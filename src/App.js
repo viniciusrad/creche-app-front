@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import * as faceapi from 'face-api.js';
 import './App.css';
 
 function App() {
   const [gender, setGender] = useState(null);
+  const [faceapi, setFaceapi] = useState(null);
+  const [modelsLoaded, setModelsLoaded] = useState(false);
 
   useEffect(() => {
-    loadModels();
+    import('face-api.js').then((api) => {
+      setFaceapi(api);
+      loadModels(api);
+    });
   }, []);
 
-  const loadModels = async () => {
-    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-    await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
-    await faceapi.nets.ageGenderNet.loadFromUri('/models');
+  const loadModels = async (api) => {
+    try {
+      await api.nets.tinyFaceDetector.loadFromUri('./models');
+      await api.nets.faceLandmark68Net.loadFromUri('./models');
+      await api.nets.faceRecognitionNet.loadFromUri('./models');
+      await api.nets.ageGenderNet.loadFromUri('./models');
+      console.log('Modelos carregados com sucesso');
+      setModelsLoaded(true);
+    } catch (error) {
+      console.log('Erro ao carregar os modelos:', error);
+    }
   };
 
   const handleImageUpload = async (e) => {
+    if (!faceapi || !modelsLoaded) return;
+
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -52,8 +64,13 @@ function App() {
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
+            disabled={!modelsLoaded}
           />
-          <p>Tire uma foto com seu celular ou faça upload de uma imagem do seu computador</p>
+          {!modelsLoaded ? (
+            <p>Carregando modelos... Por favor, aguarde.</p>
+          ) : (
+            <p>Tire uma foto com seu celular ou faça upload de uma imagem do seu computador</p>
+          )}
           {gender && <p>Gênero detectado: {gender}</p>}
         </div>
       </header>
