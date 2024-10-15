@@ -47,7 +47,7 @@ function App() {
       <header className="App-header">
         <h1>Creche App</h1>
 
-        {window.innerWidth <= 768 && (
+   
           <div>
             <input
               type="file"
@@ -58,7 +58,6 @@ function App() {
             <p>Tire uma foto com seu celular/</p>
             {gender && <p>Gênero detectado: {gender}</p>}
           </div>
-        )}
       </header>
     </div>
   );
