@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [gender, setGender] = useState(null);
+  const [age, setAge] = useState(null);
+  const [expression, setExpression] = useState(null);
   const [faceapi, setFaceapi] = useState(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
 
@@ -19,6 +21,7 @@ function App() {
       await api.nets.faceLandmark68Net.loadFromUri('./models');
       await api.nets.faceRecognitionNet.loadFromUri('./models');
       await api.nets.ageGenderNet.loadFromUri('./models');
+      await api.nets.faceExpressionNet.loadFromUri('./models');
       console.log('Modelos carregados com sucesso');
       setModelsLoaded(true);
     } catch (error) {
@@ -41,23 +44,31 @@ function App() {
         const container = document.querySelector('.App-header');
         container.appendChild(img);
 
-        // Realizar detecção facial e classificação de gênero
+        // Realizar detecção facial e classificação de gênero, idade e expressão
         const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
           .withFaceLandmarks()
-          .withAgeAndGender();
+          .withAgeAndGender()
+          .withFaceExpressions();
 
         if (detections) {
           setGender(detections.gender);
+          setAge(Math.round(detections.age));
+          setExpression(getTopExpression(detections.expressions));
         }
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const getTopExpression = (expressions) => {
+    return Object.keys(expressions).reduce((a, b) => expressions[a] > expressions[b] ? a : b);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Creche App</h1>
+        <p>Protótipo de Reconhecimento Facial</p>
 
         <div>
           <input
@@ -72,6 +83,8 @@ function App() {
             <p>Tire uma foto com seu celular ou faça upload de uma imagem do seu computador</p>
           )}
           {gender && <p>Gênero detectado: {gender}</p>}
+          {age && <p>Idade estimada: {age} anos</p>}
+          {expression && <p>Expressão facial: {expression}</p>}
         </div>
       </header>
     </div>
