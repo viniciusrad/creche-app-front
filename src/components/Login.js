@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -13,6 +14,15 @@ import {
 import { Google as GoogleIcon, Facebook as FacebookIcon } from '@mui/icons-material';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aqui você normalmente faria a lógica de autenticação
+    // Por enquanto, vamos apenas redirecionar para a página inicial
+    navigate('/');
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -30,7 +40,7 @@ function Login() {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -95,4 +105,3 @@ function Login() {
 }
 
 export default Login;
-
