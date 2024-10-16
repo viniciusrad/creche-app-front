@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function FacialRecognition() {
   const [gender, setGender] = useState(null);
@@ -6,6 +6,8 @@ function FacialRecognition() {
   const [expression, setExpression] = useState(null);
   const [faceapi, setFaceapi] = useState(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState(null);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     import('face-api.js').then((api) => {
@@ -28,6 +30,10 @@ function FacialRecognition() {
     }
   };
 
+  const handleCapture = () => {
+    fileInputRef.current.click();
+  };
+
   const handleImageUpload = async (e) => {
     if (!faceapi || !modelsLoaded) return;
 
@@ -35,14 +41,9 @@ function FacialRecognition() {
     if (file) {
       const reader = new FileReader();
       reader.onload = async (event) => {
-        const img = document.createElement('img');
-        img.src = event.target.result;
-        img.style.maxWidth = '100%';
-        img.style.marginTop = '20px';
+        setImageSrc(event.target.result);
         
-        const container = document.querySelector('.facial-recognition');
-        container.appendChild(img);
-
+        const img = await faceapi.fetchImage(event.target.result);
         const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
           .withFaceLandmarks()
           .withAgeAndGender()
@@ -67,14 +68,16 @@ function FacialRecognition() {
       <input
         type="file"
         accept="image/*"
+        capture="environment"
         onChange={handleImageUpload}
-        disabled={!modelsLoaded}
+        ref={fileInputRef}
+        style={{ display: 'none' }}
       />
-      {!modelsLoaded ? (
-        <p>Carregando modelos... Por favor, aguarde.</p>
-      ) : (
-        <p>Tire uma foto com seu celular ou faça upload de uma imagem do seu computador</p>
-      )}
+      <button onClick={handleCapture} disabled={!modelsLoaded}>
+        Tirar Foto
+      </button>
+      {!modelsLoaded && <p>Carregando modelos... Por favor, aguarde.</p>}
+      {imageSrc && <img src={imageSrc} alt="Foto capturada" style={{ maxWidth: '100%', marginTop: '20px' }} />}
       {gender && <p>Gênero detectado: {gender}</p>}
       {age && <p>Idade estimada: {age} anos</p>}
       {expression && <p>Expressão facial: {expression}</p>}
@@ -83,4 +86,3 @@ function FacialRecognition() {
 }
 
 export default FacialRecognition;
-
