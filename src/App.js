@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import FacialRecognition from './components/FacialRecognition';
-
+import Login from './components/Login';
 function App() {
   return (
     <div className="App">
@@ -10,6 +10,9 @@ function App() {
         <p>Protótipo de Reconhecimento Facial</p>
         <FacialRecognition />
       </header>
+
+      <Login />
+
     </div>
   );
 }
