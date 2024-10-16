@@ -18,15 +18,29 @@ function FacialRecognition() {
 
   const loadModels = async (api) => {
     try {
-      await api.nets.tinyFaceDetector.loadFromUri('./models');
-      await api.nets.faceLandmark68Net.loadFromUri('./models');
-      await api.nets.faceRecognitionNet.loadFromUri('./models');
-      await api.nets.ageGenderNet.loadFromUri('./models');
-      await api.nets.faceExpressionNet.loadFromUri('./models');
-      console.log('Modelos carregados com sucesso');
+      console.log('Iniciando carregamento dos modelos...');
+      const modelPath = `${process.env.PUBLIC_URL}/models`;
+      console.log('Caminho dos modelos:', modelPath);
+      
+      await api.nets.tinyFaceDetector.loadFromUri(modelPath);
+      console.log('tinyFaceDetector carregado');
+      await api.nets.faceLandmark68Net.loadFromUri(modelPath);
+      console.log('faceLandmark68Net carregado');
+      await api.nets.faceRecognitionNet.loadFromUri(modelPath);
+      console.log('faceRecognitionNet carregado');
+      await api.nets.ageGenderNet.loadFromUri(modelPath);
+      console.log('ageGenderNet carregado');
+      await api.nets.faceExpressionNet.loadFromUri(modelPath);
+      console.log('faceExpressionNet carregado');
+      
+      console.log('Todos os modelos carregados com sucesso');
       setModelsLoaded(true);
     } catch (error) {
-      console.log('Erro ao carregar os modelos:', error);
+      console.error('Erro ao carregar os modelos:', error);
+      console.error('Detalhes do erro:', error.message);
+      if (error.stack) {
+        console.error('Stack trace:', error.stack);
+      }
     }
   };
 
