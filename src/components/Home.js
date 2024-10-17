@@ -3,6 +3,7 @@ import { Grid, Paper, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import FaceIcon from '@mui/icons-material/Face';
+import FeedIcon from '@mui/icons-material/Feed';
 
 function Home() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Home() {
   const cards = [
     { icon: <HomeIcon fontSize="large" />, label: 'Início', path: '/' },
     { icon: <FaceIcon fontSize="large" />, label: 'Reconhecimento Facial', path: '/reconhecimento-facial' },
+    { icon: <FeedIcon fontSize="large" />, label: 'Feed de notícias', path: '/feed' },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },

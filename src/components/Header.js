@@ -79,6 +79,14 @@ function Header() {
             >
               Login
             </Button>
+            <Button 
+              variant="contained"
+              sx={styles.header.loginButton}
+              component={Link} 
+              to="/feed"
+            >
+              Feed de notícias
+            </Button>
           </Box>
         )}
       </Toolbar>
