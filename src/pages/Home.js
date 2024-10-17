@@ -14,6 +14,7 @@ function Home() {
     { icon: <FaceIcon fontSize="large" />, label: 'Reconhecimento Facial', path: '/reconhecimento-facial' },
     { icon: <FeedIcon fontSize="large" />, label: 'Feed de notícias', path: '/feed' },
     { icon: <GroupIcon fontSize="large" />, label: 'Turmas', path: '/classe-detalhes' },
+    { icon: <GroupIcon fontSize="large" />, label: 'Acompanhamento de Entrada/Saída', path: '/acompanhamento-entrada-saida' },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },

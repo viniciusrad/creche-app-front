@@ -10,7 +10,7 @@ import { theme, styles } from './styles';
 import FeedNoticias from './pages/FeedNoticias';
 import ClasseDetalhes from './pages/ClasseDetalhes';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import AcompanhamentoEntradaSaida from './pages/AcompanhamentoEntradaSaida';
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -24,6 +24,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/feed" element={<FeedNoticias />} />
             <Route path="/classe-detalhes/" element={<ClasseDetalhes />} />
+            <Route path="/acompanhamento-entrada-saida" element={<AcompanhamentoEntradaSaida />} /> 
 
           </Routes>
         </Box>
