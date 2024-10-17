@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/creche-app-front/static/css/main.6982eb94.css",
-    "main.js": "/creche-app-front/static/js/main.72932718.js",
+    "main.js": "/creche-app-front/static/js/main.b8f18680.js",
     "static/js/334.fdf92698.chunk.js": "/creche-app-front/static/js/334.fdf92698.chunk.js",
     "static/js/206.8aa25c1f.chunk.js": "/creche-app-front/static/js/206.8aa25c1f.chunk.js",
     "static/js/585.891e16b2.chunk.js": "/creche-app-front/static/js/585.891e16b2.chunk.js",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.6982eb94.css",
-    "static/js/main.72932718.js"
+    "static/js/main.b8f18680.js"
   ]
 }
