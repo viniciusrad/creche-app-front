@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './FacialRecognition.css'; // Certifique-se de criar este arquivo CSS
 
 function FacialRecognition() {
   const [gender, setGender] = useState(null);
@@ -8,6 +9,8 @@ function FacialRecognition() {
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const fileInputRef = useRef(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [photoTaken, setPhotoTaken] = useState(false);
 
   useEffect(() => {
     import('face-api.js').then((api) => {
@@ -53,6 +56,8 @@ function FacialRecognition() {
 
     const file = e.target.files[0];
     if (file) {
+      setIsProcessing(true);
+      setPhotoTaken(true);
       const reader = new FileReader();
       reader.onload = async (event) => {
         setImageSrc(event.target.result);
@@ -68,6 +73,7 @@ function FacialRecognition() {
           setAge(Math.round(detections.age));
           setExpression(getTopExpression(detections.expressions));
         }
+        setIsProcessing(false);
       };
       reader.readAsDataURL(file);
     }
@@ -79,6 +85,29 @@ function FacialRecognition() {
 
   return (
     <div className="facial-recognition">
+      <div className="content-container">
+        <div className={`button-container ${!photoTaken ? 'pulsing' : ''}`}>
+          <button 
+            onClick={handleCapture} 
+            disabled={!modelsLoaded || isProcessing}
+            className="capture-button"
+          >
+            {isProcessing ? 'Processando...' : 'Tirar Foto'}
+          </button>
+        </div>
+        {!modelsLoaded && <p>Carregando modelos... Por favor, aguarde.</p>}
+        {isProcessing && <p>Analisando imagem... Por favor, aguarde.</p>}
+        {imageSrc && (
+          <div className="image-container">
+            <img src={imageSrc} alt="Foto capturada" />
+          </div>
+        )}
+        <div className="results-container">
+          {gender && <p>Gênero detectado: {gender}</p>}
+          {age && <p>Idade estimada: {age} anos</p>}
+          {expression && <p>Expressão facial: {expression}</p>}
+        </div>
+      </div>
       <input
         type="file"
         accept="image/*"
@@ -87,14 +116,6 @@ function FacialRecognition() {
         ref={fileInputRef}
         style={{ display: 'none' }}
       />
-      <button onClick={handleCapture} disabled={!modelsLoaded}>
-        Tirar Foto
-      </button>
-      {!modelsLoaded && <p>Carregando modelos... Por favor, aguarde.</p>}
-      {imageSrc && <img src={imageSrc} alt="Foto capturada" style={{ maxWidth: '100%', marginTop: '20px' }} />}
-      {gender && <p>Gênero detectado: {gender}</p>}
-      {age && <p>Idade estimada: {age} anos</p>}
-      {expression && <p>Expressão facial: {expression}</p>}
     </div>
   );
 }
