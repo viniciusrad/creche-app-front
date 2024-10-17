@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import FaceIcon from '@mui/icons-material/Face';
 import FeedIcon from '@mui/icons-material/Feed';
+import GroupIcon from '@mui/icons-material/Group';
 
 function Home() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ function Home() {
     { icon: <HomeIcon fontSize="large" />, label: 'Início', path: '/' },
     { icon: <FaceIcon fontSize="large" />, label: 'Reconhecimento Facial', path: '/reconhecimento-facial' },
     { icon: <FeedIcon fontSize="large" />, label: 'Feed de notícias', path: '/feed' },
+    { icon: <GroupIcon fontSize="large" />, label: 'Turmas', path: '/classe-detalhes' },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },

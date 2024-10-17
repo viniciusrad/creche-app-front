@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import { theme, styles } from './styles';
 import FeedNoticias from './pages/FeedNoticias';
+import ClasseDetalhes from './pages/ClasseDetalhes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
             <Route path="/reconhecimento-facial" element={<FacialRecognition />} />
             <Route path="/login" element={<Login />} />
             <Route path="/feed" element={<FeedNoticias />} />
+            <Route path="/classe-detalhes/" element={<ClasseDetalhes />} />
+
           </Routes>
         </Box>
       </Container>

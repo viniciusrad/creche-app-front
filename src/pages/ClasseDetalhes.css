@@ -1,0 +1,66 @@
+.classe-detalhes {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.imagem-turma {
+  width: 30%;
+  height: auto;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.info-turma {
+  flex-grow: 1;
+}
+
+.info-professor {
+  display: flex;
+  align-items: center;
+}
+
+.imagem-professor {
+  width: calc(30% * 0.7); /* 30% menor que a imagem da turma */
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.conteudo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lista-alunos, .planejamento-dia {
+  width: 48%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.planejamento-dia li {
+  display: flex;
+}
+
+.horario {
+  min-width: 80px;
+  font-weight: bold;
+}
+
+.atividade {
+  flex-grow: 1;
+}
