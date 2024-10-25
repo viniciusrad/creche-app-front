@@ -11,6 +11,9 @@ import FeedNoticias from './pages/FeedNoticias';
 import ClasseDetalhes from './pages/ClasseDetalhes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AcompanhamentoEntradaSaida from './pages/AcompanhamentoEntradaSaida';
+import AlunoPerfil from './pages/AlunoPerfil';
+
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -25,7 +28,7 @@ function App() {
             <Route path="/feed" element={<FeedNoticias />} />
             <Route path="/classe-detalhes/" element={<ClasseDetalhes />} />
             <Route path="/acompanhamento-entrada-saida" element={<AcompanhamentoEntradaSaida />} /> 
-
+            <Route path="/aluno-perfil" element={<AlunoPerfil />} />
           </Routes>
         </Box>
       </Container>

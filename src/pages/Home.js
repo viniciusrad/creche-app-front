@@ -6,6 +6,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import FeedIcon from '@mui/icons-material/Feed';
 import GroupIcon from '@mui/icons-material/Group';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import AlunoPerfilIcon from '@mui/icons-material/Person';
 function Home() {
   const navigate = useNavigate();
 
@@ -14,7 +15,9 @@ function Home() {
     { icon: <FaceIcon fontSize="large" />, label: 'Reconhecimento Facial', path: '/reconhecimento-facial' },
     { icon: <FeedIcon fontSize="large" />, label: 'Feed de notícias', path: '/feed' },
     { icon: <GroupIcon fontSize="large" />, label: 'Turmas', path: '/classe-detalhes' },
-    { icon: <DirectionsBusIcon fontSize="large" />, label: 'Acompanhamento de Entrada/Saída', path: '/acompanhamento-entrada-saida' },
+    { icon: <DirectionsBusIcon fontSize="large" />, label: 'Acompanhamento de Entrada/Saída', path: '/acompanhamento-entrada-saida' }, 
+    { icon: <FaceIcon fontSize="large" />, label: 'Perfil do Aluno', path: '/aluno-perfil' },
+    
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
