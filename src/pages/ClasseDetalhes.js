@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Typography, Box, Paper, Grid, Avatar, List, ListItem, ListItemText, Divider } from '@mui/material';
 import { styles } from '../styles';
-// import { getClasseDetalhes } from '../services/api';
 import './ClasseDetalhes.css';
+import mockAlunos from '../mocks/mockAlunos';
 
 // Dados mockados atualizados com imagens de placeholder do Unsplash
 const mockClasseDetalhes = {
@@ -13,11 +13,6 @@ const mockClasseDetalhes = {
   professorId: 101,
   imagemTurma: 'https://source.unsplash.com/800x600/?classroom',
   imagemProfessor: 'https://source.unsplash.com/400x400/?teacher',
-  alunos: [
-    { id: 1, nome: 'João Silva', imagem: 'https://source.unsplash.com/100x100/?student' },
-    { id: 2, nome: 'Ana Oliveira', imagem: 'https://source.unsplash.com/100x100/?student' },
-    { id: 3, nome: 'Pedro Santos', imagem: 'https://source.unsplash.com/100x100/?student' },
-  ],
   planejamentoDia: [
     { horario: '08:00', atividade: 'Matemática', imagem: 'https://source.unsplash.com/100x100/?math' },
     { horario: '10:00', atividade: 'Português', imagem: 'https://source.unsplash.com/100x100/?book' },
@@ -29,11 +24,10 @@ const mockClasseDetalhes = {
 const getClasseDetalhesMock = (id) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(mockClasseDetalhes);
+      resolve({...mockClasseDetalhes, alunos: Object.values(mockAlunos)});
     }, 500); // Simula um delay de 500ms
   });
 };
-
 
 function ClasseDetalhes() {
   const [classe, setClasse] = useState(null);
@@ -48,7 +42,7 @@ function ClasseDetalhes() {
           setClasse(detalhes);
         } else {
           // Se não houver id, carrega os dados padrão
-          setClasse(mockClasseDetalhes);
+          setClasse({...mockClasseDetalhes, alunos: Object.values(mockAlunos)});
         }
       } catch (erro) {
         console.error('Erro ao carregar detalhes da classe:', erro);
@@ -99,7 +93,13 @@ function ClasseDetalhes() {
             <Typography variant="h6" gutterBottom>Alunos</Typography>
             <List>
               {classe.alunos.map((aluno) => (
-                <ListItem key={aluno.id}>
+                <ListItem 
+                  key={aluno.id} 
+                  button 
+                  component={Link} 
+                  to={`/aluno-perfil/${aluno.id}`}
+                  state={{ aluno: aluno }}
+                >
                   <Avatar src={aluno.imagem} alt={aluno.nome} sx={{ mr: 2 }} />
                   <ListItemText primary={aluno.nome} />
                 </ListItem>
