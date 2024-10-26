@@ -54,6 +54,12 @@ const CadastroAluno = () => {
     }
   };
 
+  const handleCapturarFoto = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   const adicionarAlergia = () => {
     if (novaAlergia && !aluno.alergias.includes(novaAlergia)) {
       setAluno({ ...aluno, alergias: [...aluno.alergias, novaAlergia] });
@@ -82,10 +88,6 @@ const CadastroAluno = () => {
     console.log('Aluno cadastrado:', aluno);
     // Navegar para o perfil do aluno após o cadastro
     navigate(`/aluno-perfil/${aluno.id}`);
-  };
-
-  const handleCapturarFoto = () => {
-    fileInputRef.current.click();
   };
 
   return (
