@@ -28,7 +28,7 @@ function App() {
             <Route path="/feed" element={<FeedNoticias />} />
             <Route path="/classe-detalhes/" element={<ClasseDetalhes />} />
             <Route path="/acompanhamento-entrada-saida" element={<AcompanhamentoEntradaSaida />} /> 
-            <Route path="/aluno-perfil/:id" element={<AlunoPerfil />} />
+            <Route path="/aluno-perfil/:id?" element={<AlunoPerfil />} />
           </Routes>
         </Box>
       </Container>

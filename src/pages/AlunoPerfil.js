@@ -23,17 +23,16 @@ import mockAlunos from '../mocks/mockAlunos';
 const AlunoPerfil = () => {
     const { id } = useParams();
     const [aluno, setAluno] = useState(null);
-    console.log(mockAlunos[id - 1]);
-
-    console.log(id);
 
     useEffect(() => {
-        // Simula uma chamada à API
-        const alunoEncontrado = mockAlunos[id - 1];
+        const alunoId = id ? parseInt(id) : 1;
+        const alunoEncontrado = mockAlunos[alunoId - 1];
 
-        console.log(alunoEncontrado);
+        console.log('ID do aluno:', alunoId);
+        console.log('Aluno encontrado:', alunoEncontrado);
+
         setAluno(alunoEncontrado || {
-            id: id,
+            id: alunoId,
             nome: "Aluno não encontrado",
             turma: "N/A",
             horario: "N/A",
