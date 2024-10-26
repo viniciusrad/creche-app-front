@@ -91,14 +91,24 @@ function ClasseDetalhes() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Typography variant="h6" gutterBottom>Alunos</Typography>
-            <List>
+            <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
               {classe.alunos.map((aluno) => (
                 <ListItem 
                   key={aluno.id} 
-                  button 
                   component={Link} 
                   to={`/aluno-perfil/${aluno.id}`}
                   state={{ aluno: aluno }}
+                  sx={{
+                    mb: 1,
+                    borderRadius: 4,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    color: 'text.primary',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      bgcolor: 'action.hover',
+                    },
+                  }}
                 >
                   <Avatar src={aluno.imagem} alt={aluno.nome} sx={{ mr: 2 }} />
                   <ListItemText primary={aluno.nome} />
