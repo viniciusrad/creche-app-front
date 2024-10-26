@@ -12,6 +12,7 @@ import ClasseDetalhes from './pages/ClasseDetalhes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AcompanhamentoEntradaSaida from './pages/AcompanhamentoEntradaSaida';
 import AlunoPerfil from './pages/AlunoPerfil';
+import CadastroAluno from './pages/CadastroAluno';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/classe-detalhes/" element={<ClasseDetalhes />} />
             <Route path="/acompanhamento-entrada-saida" element={<AcompanhamentoEntradaSaida />} /> 
             <Route path="/aluno-perfil/:id?" element={<AlunoPerfil />} />
+            <Route path="/cadastro-aluno" element={<CadastroAluno />} />
           </Routes>
         </Box>
       </Container>

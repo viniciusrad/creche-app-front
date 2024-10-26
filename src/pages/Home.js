@@ -7,6 +7,7 @@ import FeedIcon from '@mui/icons-material/Feed';
 import GroupIcon from '@mui/icons-material/Group';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import AlunoPerfilIcon from '@mui/icons-material/Person';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 function Home() {
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ function Home() {
     { icon: <GroupIcon fontSize="large" />, label: 'Turmas', path: '/classe-detalhes' },
     { icon: <DirectionsBusIcon fontSize="large" />, label: 'Acompanhamento de Entrada/Saída', path: '/acompanhamento-entrada-saida' }, 
     { icon: <FaceIcon fontSize="large" />, label: 'Perfil do Aluno', path: '/aluno-perfil' },
+    { icon: <PersonAddIcon fontSize="large" />, label: 'Cadastro de Aluno', path: '/cadastro-aluno' },
     
     { icon: null, label: 'Em breve', path: null },
     { icon: null, label: 'Em breve', path: null },
