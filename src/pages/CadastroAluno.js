@@ -54,7 +54,8 @@ const CadastroAluno = () => {
         }
     };
 
-    const handleCapturarFoto = () => {
+    const handleCapturarFoto = (e) => {
+        e.preventDefault();
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
@@ -175,7 +176,7 @@ const CadastroAluno = () => {
                                         />
                                     </Button>
                                     <button
-                                        onClick={handleCapturarFoto}
+                                        onClick={(e) => handleCapturarFoto(e)}
                                         className="capture-button"
                                     >
                                         Tirar Foto
