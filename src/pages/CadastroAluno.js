@@ -160,7 +160,7 @@ const CadastroAluno = () => {
                                     sx={{ width: 100, height: 100, mb: 2 }}
                                 />
                                 <Box display="flex" flexDirection="column" width="100%" maxWidth="200px">
-                                    <Button
+                                    {/* <Button
                                         variant="contained"
                                         component="label"
                                         startIcon={<PhotoCamera />}
@@ -173,14 +173,16 @@ const CadastroAluno = () => {
                                             type="file"
                                             hidden
                                             onChange={handleImagemChange}
-                                        />
-                                    </Button>
-                                    <div
+                                            />
+                                    </Button> */}
+                                    <button
                                         onClick={(e) => handleCapturarFoto(e)}
+                                        ref={fileInputRef}
+                                        capture="environment"
                                         className="capture-button"
                                     >
                                         Tirar Foto
-                                    </div>
+                                    </button>
                                 </Box>
                             </Box>
                         </Grid>
