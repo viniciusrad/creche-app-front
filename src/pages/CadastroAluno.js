@@ -175,12 +175,12 @@ const CadastroAluno = () => {
                                             onChange={handleImagemChange}
                                         />
                                     </Button>
-                                    <button
+                                    <div
                                         onClick={(e) => handleCapturarFoto(e)}
                                         className="capture-button"
                                     >
                                         Tirar Foto
-                                    </button>
+                                    </div>
                                 </Box>
                             </Box>
                         </Grid>
